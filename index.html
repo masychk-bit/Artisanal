@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisanal Coffee Roasters — Справжня кава з душею</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7F2;
+            color: #2C1E16;
+        }
+        h1, h2, h3, .font-serif-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(28, 18, 12, 0.88), rgba(28, 18, 12, 0.55)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-[#1C120C]/95 backdrop-blur-md text-stone-100 border-b border-amber-900/30 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex items-center space-x-3">
+                    <i class="fa-solid fa-mug-hot text-amber-500 text-2xl"></i>
+                    <span class="font-serif-display text-xl sm:text-2xl font-bold tracking-wide text-amber-50">Artisanal Coffee</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-amber-400 transition">Про нас</a>
+                    <a href="#menu" class="hover:text-amber-400 transition">Меню</a>
+                    <a href="#reviews" class="hover:text-amber-400 transition">Відгуки</a>
+                    <a href="#contact" class="hover:text-amber-400 transition">Контакти</a>
+                </nav>
+
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-lg shadow-amber-900/40">
+                        Забронювати столик
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-stone-200 hover:text-amber-400 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#241710] border-b border-amber-900/40 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-stone-200 hover:text-amber-400">Про нас</a>
+            <a href="#menu" class="block py-2 text-stone-200 hover:text-amber-400">Меню</a>
+            <a href="#reviews" class="block py-2 text-stone-200 hover:text-amber-400">Відгуки</a>
+            <a href="#contact" class="block py-2 text-stone-200 hover:text-amber-400">Контакти</a>
+            <a href="#contact" class="block text-center bg-amber-600 text-white py-2.5 rounded-full font-semibold mt-4">Забронювати столик</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="max-w-2xl">
+                <span class="inline-block uppercase tracking-widest text-amber-400 text-xs sm:text-sm font-semibold mb-4 border border-amber-500/40 bg-amber-950/50 px-3 py-1 rounded-full">
+                    Власна обсмажка • Specialty Coffee
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-bold leading-tight mb-6">
+                    Справжня кава <span class="text-amber-400 italic">з душею</span> у кожній чашці
+                </h1>
+                <p class="text-stone-300 text-lg sm:text-xl mb-10 leading-relaxed">
+                    Ми відбираємо найкращі зерна арабіки з високогірних плантацій Ефіопії, Колумбії та Бразилії, щоб подарувати вам бездоганний смак свіжої обсмажки.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#menu" class="bg-amber-600 hover:bg-amber-500 text-white text-center px-8 py-4 rounded-full font-semibold transition shadow-xl">
+                        Переглянути меню
+                    </a>
+                    <a href="#contact" class="border border-stone-400/60 hover:border-amber-400 hover:text-amber-300 text-center px-8 py-4 rounded-full font-semibold transition backdrop-blur-sm">
+                        Завітати до нас
+                    </a>
+                </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/15">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base font-sans">100% Specialty Арабіка</h3>
+                        <p class="text-stone-400 text-sm">Прямі поставки з ферм</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base font-sans">Свіжа обсмажка щотижня</h3>
+                        <p class="text-stone-400 text-sm">Власний ростер у кав'ярні</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base font-sans">Майстерність бариста</h3>
+                        <p class="text-stone-400 text-sm">Авторські рецепти та класика</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Наша філософія</span>
+            <h2 class="text-3xl sm:text-4xl font-bold mt-2 mb-4">Від зеленого зерна до вашої улюбленої чашки</h2>
+            <p class="text-stone-600">Кожен етап створення напою для нас — це мистецтво, засноване на точності та любові до своєї справи.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Відбірні зерна</h3>
+                <p class="text-stone-600 leading-relaxed">Ми співпрацюємо з перевіреними імпортерами та обираємо мікролоти з оцінкою SCA від 85 балів і вище.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-temperature-high"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Точний профіль обсмажки</h3>
+                <p class="text-stone-600 leading-relaxed">Наші обсмажувальники підбирають індивідуальний температурний профіль для розкриття квіткових і фруктових нот.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Затишок і гостинність</h3>
+                <p class="text-stone-600 leading-relaxed">Місце, де приємно попрацювати зранку за фільтр-кавою або провести вечір за розмовою зі свіжим десертом.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-[#F2ECE1] fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Карта напоїв та випічки</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 mb-4">Наше меню</h2>
+                <p class="text-stone-600">Оберіть категорію, щоб переглянути наші фірмові напої та свіжі десерти.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn active bg-amber-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition" data-filter="all">Усе меню</button>
+                <button class="filter-btn bg-white text-stone-700 hover:bg-amber-100 px-6 py-2.5 rounded-full text-sm font-semibold transition" data-filter="espresso">Еспресо-бар</button>
+                <button class="filter-btn bg-white text-stone-700 hover:bg-amber-100 px-6 py-2.5 rounded-full text-sm font-semibold transition" data-filter="filter">Альтернатива</button>
+                <button class="filter-btn bg-white text-stone-700 hover:bg-amber-100 px-6 py-2.5 rounded-full text-sm font-semibold transition" data-filter="dessert">Десерти</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="espresso">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">Флет Вайт</h3>
+                            <span class="text-amber-800 font-bold text-lg">85 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Подвійний еспресо на основі бразильської арабіки з ніжною шовковистою молочною пінкою.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">180 мл • Еспресо-бар</span>
+                </div>
+
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="espresso">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">Лавандовий Раф</h3>
+                            <span class="text-amber-800 font-bold text-lg">105 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Вершковий кавовий напій із натуральним сиропом гірської лаванди та ванільним цукром.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">250 мл • Еспресо-бар</span>
+                </div>
+
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="filter">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">V60 Пуровер (Ефіопія)</h3>
+                            <span class="text-amber-800 font-bold text-lg">95 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Чистий, яскравий смак із нотами бергамоту, жасмину та стиглого персика.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">250 мл • Альтернатива</span>
+                </div>
+
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="filter">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">Аеропрес (Колумбія)</h3>
+                            <span class="text-amber-800 font-bold text-lg">95 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Насичений і збалансований напій із відтінками червоного яблука та карамелі.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">220 мл • Альтернатива</span>
+                </div>
+
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="dessert">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">Мигдалевий круасан</h3>
+                            <span class="text-amber-800 font-bold text-lg">110 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Хрустке листкове тісто на вершковому маслі з ніжним мигдалевим кремом франжипан.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">140 г • Десерти</span>
+                </div>
+
+                <div class="menu-item bg-white p-6 rounded-2xl shadow-sm border border-stone-200/60 flex flex-col justify-between" data-category="dessert">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold">Баскський чізкейк</h3>
+                            <span class="text-amber-800 font-bold text-lg">125 ₴</span>
+                        </div>
+                        <p class="text-stone-600 text-sm">Кремовий сирний десерт із карамелізованою скоринкою, що ідеально пасує до фільтр-кави.</p>
+                    </div>
+                    <span class="inline-block mt-4 text-xs text-stone-400">160 г • Десерти</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Відгуки гостей</span>
+            <h2 class="text-3xl sm:text-4xl font-bold mt-2">Що кажуть наші відвідувачі</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80">
+                <div class="text-amber-500 mb-4 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-stone-600 italic mb-6">«Найкращий пуровер у місті! Бариста завжди порадить зерно під настрій, а мигдалевий круасан тут просто неймовірний.»</p>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold">ОК</div>
+                    <div>
+                        <h4 class="font-bold text-sm font-sans">Олена Коваленко</h4>
+                        <span class="text-xs text-stone-400">Постійна гостя</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80">
+                <div class="text-amber-500 mb-4 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-stone-600 italic mb-6">«Дуже затишна атмосфера, швидкий Wi-Fi та приємна музика. Ідеальне місце, щоб почати робочий день із чашки флет вайту.»</p>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-stone-700 text-white flex items-center justify-center font-bold">АМ</div>
+                    <div>
+                        <h4 class="font-bold text-sm font-sans">Андрій Мельник</h4>
+                        <span class="text-xs text-stone-400">UI/UX Дизайнер</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/80">
+                <div class="text-amber-500 mb-4 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-stone-600 italic mb-6">«Регулярно купую тут зерна додому — завжди свіжа дата обсмажки. Відчувається, що команда по-справжньому любить каву.»</p>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold">МС</div>
+                    <div>
+                        <h4 class="font-bold text-sm font-sans">Марія Савченко</h4>
+                        <span class="text-xs text-stone-400">Кавовий ентузіаст</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="py-24 bg-[#1C120C] text-stone-100 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-amber-400 font-semibold uppercase tracking-wider text-sm">Контакти та локація</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mt-2 mb-6">Чекаємо на вас у гості</h2>
+                    <p class="text-stone-300 mb-8 leading-relaxed">
+                        Хочете провести ділову зустріч або затишний вечір? Забронюйте столик заздалегідь, і ми підготуємо для вас найкраще місце.
+                    </p>
+
+                    <div class="space-y-5">
+                        <div class="flex items-start space-x-4">
+                            <i class="fa-solid fa-location-dot text-amber-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold font-sans">Адреса</h4>
+                                <p class="text-stone-400 text-sm">вул. Сумська, 45, Харків</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fa-solid fa-clock text-amber-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold font-sans">Графік роботи</h4>
+                                <p class="text-stone-400 text-sm">Пн–Пт: 08:00 – 21:00 | Сб–Нд: 09:00 – 22:00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fa-solid fa-phone text-amber-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold font-sans">Телефон</h4>
+                                <p class="text-stone-400 text-sm">+38 (067) 555-01-92</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="bg-[#281B13] p-8 sm:p-10 rounded-3xl border border-amber-900/40 shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Забронювати столик</h3>
+                    <form id="booking-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-stone-300 mb-1">Ваше ім'я</label>
+                            <input type="text" id="guest-name" required placeholder="Олександр" class="w-full px-4 py-3 rounded-xl bg-[#1C120C] border border-stone-700 text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-stone-300 mb-1">Телефон</label>
+                                <input type="tel" id="guest-phone" required placeholder="+38 (0__) ___-__-__" class="w-full px-4 py-3 rounded-xl bg-[#1C120C] border border-stone-700 text-white focus:outline-none focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-stone-300 mb-1">Кількість гостей</label>
+                                <select id="guest-count" class="w-full px-4 py-3 rounded-xl bg-[#1C120C] border border-stone-700 text-white focus:outline-none focus:border-amber-500">
+                                    <option value="1-2 особи">1–2 особи</option>
+                                    <option value="3-4 особи">3–4 особи</option>
+                                    <option value="5+ осіб">5+ осіб</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-stone-300 mb-1">Дата</label>
+                                <input type="date" id="booking-date" required class="w-full px-4 py-3 rounded-xl bg-[#1C120C] border border-stone-700 text-white focus:outline-none focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-stone-300 mb-1">Час</label>
+                                <input type="time" id="booking-time" value="14:00" required class="w-full px-4 py-3 rounded-xl bg-[#1C120C] border border-stone-700 text-white focus:outline-none focus:border-amber-500">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-semibold py-3.5 rounded-xl transition shadow-lg mt-2">
+                            Підтвердити бронювання
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#140D08] text-stone-400 py-8 border-t border-white/10 text-center text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 Artisanal Coffee Roasters. Усі права захищено.</p>
+            <div class="flex space-x-5 text-lg">
+                <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Confirmation -->
+    <div id="modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 px-4">
+        <div class="bg-white text-stone-900 rounded-3xl max-w-md w-full p-8 text-center shadow-2xl">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Столик заброньовано!</h3>
+            <p id="modal-text" class="text-stone-600 text-sm mb-6"></p>
+            <button id="close-modal" class="bg-amber-700 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-semibold transition">
+                Чудово
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menu filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-amber-800', 'text-white');
+                    b.classList.add('bg-white', 'text-stone-700');
+                });
+                btn.classList.remove('bg-white', 'text-stone-700');
+                btn.classList.add('bg-amber-800', 'text-white');
+
+                const filter = btn.getAttribute('data-filter');
+                menuItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Booking form & Modal
+        const bookingForm = document.getElementById('booking-form');
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modal-text');
+        const closeModal = document.getElementById('close-modal');
+
+        // Set default date to today
+        document.getElementById('booking-date').valueAsDate = new Date();
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('guest-name').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const guests = document.getElementById('guest-count').value;
+
+            modalText.textContent = `Дякуємо, ${name}! Чекаємо на вас (${guests}) ${date} о ${time}.`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            bookingForm.reset();
+            document.getElementById('booking-date').valueAsDate = new Date();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+
+        // Scroll fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
