@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisanal Coffee Roasters | Справжня кава з душею</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#FDFBF7',
+                            100: '#F4EFE6',
+                            200: '#E6D7C3',
+                            300: '#D5BC9F',
+                            400: '#C29F7C',
+                            500: '#A88059',
+                            600: '#8A623C',
+                            700: '#6D492A',
+                            800: '#4F331A',
+                            900: '#2E1C0C',
+                            950: '#1A0E05',
+                        },
+                        amber_gold: '#D4AF37'
+                    },
+                    fontFamily: {
+                        serif: ['Marcellus', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Animations & Fine Tuning */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 215, 195, 0.5);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(26, 14, 5, 0.75) 0%, rgba(26, 14, 5, 0.85) 100%);
+        }
+
+        /* Reveal animations on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A0E05;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A88059;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C29F7C;
+        }
+    </style>
+</head>
+<body class="bg-coffee-50 font-sans text-coffee-900 antialiased selection:bg-coffee-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-coffee-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-bold fa-mug-hot text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white">ARTISANAL</span>
+                    <span class="text-[10px] tracking-widest text-coffee-300 uppercase -mt-1">Coffee Roasters</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/90">
+                <a href="#about" class="hover:text-coffee-300 transition-colors">Про нас</a>
+                <a href="#menu" class="hover:text-coffee-300 transition-colors">Меню</a>
+                <a href="#reviews" class="hover:text-coffee-300 transition-colors">Відгуки</a>
+                <a href="#contacts" class="hover:text-coffee-300 transition-colors">Контакти</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#booking" class="px-5 py-2.5 rounded-full bg-coffee-500 hover:bg-coffee-600 text-white font-medium text-sm transition-all shadow-lg hover:shadow-coffee-500/30 transform hover:-translate-y-0.5">
+                    Замовити столик
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none p-2" aria-label="Відкрити меню">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-coffee-950/95 backdrop-blur-md border-b border-coffee-800/50 py-6 px-6 transition-all">
+            <div class="flex flex-col gap-4 text-center">
+                <a href="#about" class="mobile-link text-white/90 hover:text-coffee-300 py-2 text-lg">Про нас</a>
+                <a href="#menu" class="mobile-link text-white/90 hover:text-coffee-300 py-2 text-lg">Меню</a>
+                <a href="#reviews" class="mobile-link text-white/90 hover:text-coffee-300 py-2 text-lg">Відгуки</a>
+                <a href="#contacts" class="mobile-link text-white/90 hover:text-coffee-300 py-2 text-lg">Контакти</a>
+                <a href="#booking" class="mobile-link mt-2 w-full py-3 rounded-xl bg-coffee-500 text-white font-medium text-center">
+                    Замовити столик
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 bg-cover bg-center bg-no-repeat overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop');">
+        <!-- Overlay -->
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <!-- Animated Particles / Accents -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-coffee-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-amber_gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center text-white px-4">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-amber_gold"></span>
+                <span class="text-xs uppercase tracking-widest text-coffee-200 font-semibold">Свіже обсмажування щодня</span>
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                Справжня кава <br><span class="italic font-normal text-coffee-300">з душею та майстерністю</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-coffee-100/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Відбірні спешелті зерна з високогірних плантацій, обсмажені за авторським профілем для створення вашого ідеального ранку.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-full bg-coffee-500 hover:bg-coffee-600 text-white font-semibold text-base transition-all duration-300 shadow-xl hover:shadow-coffee-500/40 transform hover:-translate-y-1 text-center">
+                    Замовити столик <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold text-base transition-all duration-300 text-center">
+                    Переглянути меню
+                </a>
+            </div>
+
+            <!-- Features Quick Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/10 text-left">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-seedling text-2xl text-coffee-300"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold">100% Арабіка</h4>
+                        <p class="text-xs text-coffee-300">Спешелті сорти</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-fire text-2xl text-coffee-300"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold">Крафтове обсмажування</h4>
+                        <p class="text-xs text-coffee-300">Власна ростерія</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-award text-2xl text-coffee-300"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold">Кращі бариста</h4>
+                        <p class="text-xs text-coffee-300">Чемпіони України</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-cookie-bite text-2xl text-coffee-300"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold">Свіжа випічка</h4>
+                        <p class="text-xs text-coffee-300">Власна пекарня</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT US SECTION -->
+    <section id="about" class="py-24 px-4 sm:px-8 bg-coffee-100/50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-coffee-600 font-semibold tracking-widest text-xs uppercase mb-2 block">Наша філософія</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-950 mb-4">Ми створюємо більше, ніж просто каву</h2>
+                <div class="w-16 h-1 bg-coffee-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-coffee-700 leading-relaxed">
+                    Artisanal Coffee Roasters заснована на пристрасті до досконалості. Ми особисто обираємо зерна у фермерів Ефіопії, Колумбії та Гватемали.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                    <div class="w-14 h-14 rounded-xl bg-coffee-200/60 text-coffee-700 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-3">Відбірні зерна</h3>
+                    <p class="text-coffee-700 text-sm leading-relaxed mb-4">
+                        Використовуємо лише 100% спешелті арабіку з високою оцінкою Q-грейдерів (85+ балів). Працюємо за принципами Direct Trade без посередників.
+                    </p>
+                    <ul class="text-xs text-coffee-600 space-y-2 border-t border-coffee-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Екологічне вирощування</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Простежуваність походження</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 150ms;">
+                    <div class="w-14 h-14 rounded-xl bg-coffee-200/60 text-coffee-700 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-temperature-arrow-up"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-3">Точне обсмажування</h3>
+                    <p class="text-coffee-700 text-sm leading-relaxed mb-4">
+                        Обсмажуємо зерно на ростері Giesen у невеликих батчах. Кожна партія має свій унікальний профіль для максимального розкриття смаку.
+                    </p>
+                    <ul class="text-xs text-coffee-600 space-y-2 border-t border-coffee-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Контроль вологості та температури</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Відпочинок зерна перед подачею</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 rounded-xl bg-coffee-200/60 text-coffee-700 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-3">Майстерність та Затишок</h3>
+                    <p class="text-coffee-700 text-sm leading-relaxed mb-4">
+                        Наші бариста пройшли сертифікацію SCA. Ми дотримуємося точних пропорцій екстракції та створюємо атмосферу, в яку хочеться повертатися.
+                    </p>
+                    <ul class="text-xs text-coffee-600 space-y-2 border-t border-coffee-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Професійне обладнання La Marzocco</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coffee-500"></i> Індивідуальний підхід до кожного</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MENU SECTION -->
+    <section id="menu" class="py-24 px-4 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="text-coffee-600 font-semibold tracking-widest text-xs uppercase mb-2 block">Вишуканий смак</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-950 mb-4">Наше Меню</h2>
+                <div class="w-16 h-1 bg-coffee-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-coffee-700">Оберіть класичні кавові напої, альтернативні заварювання або свіжі авторські десерти.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-2 sm:gap-4 mb-12 flex-wrap reveal">
+                <button class="menu-filter active px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-coffee-900 text-white shadow-md" data-category="all">
+                    Все меню
+                </button>
+                <button class="menu-filter px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-coffee-100 text-coffee-800 hover:bg-coffee-200" data-category="espresso">
+                    Еспресо-бар
+                </button>
+                <button class="menu-filter px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-coffee-100 text-coffee-800 hover:bg-coffee-200" data-category="alternative">
+                    Альтернатива
+                </button>
+                <button class="menu-filter px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-coffee-100 text-coffee-800 hover:bg-coffee-200" data-category="desserts">
+                    Десерти
+                </button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="menu-item espresso bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" alt="Еспресо" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-coffee-950/80 backdrop-blur-md text-amber_gold text-xs font-bold px-3 py-1 rounded-full">Класика</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Подвійний Еспресо</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">75 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">На насиченому зерні з Ефіопії з нотами темногу шоколаду та яскравих цитрусів.</p>
+                        </div>
+                        <button onclick="openOrderModal('Подвійний Еспресо')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item espresso bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=800&auto=format&fit=crop" alt="Капучино" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Капучино Оксамитовий</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">95 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">Ідеальний баланс еспресо та шовковистої молочної пінки. Можливо на рослинному молоці.</p>
+                        </div>
+                        <button onclick="openOrderModal('Капучино Оксамитовий')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item alternative bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?q=80&w=800&auto=format&fit=crop" alt="V60" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-coffee-600 text-white text-xs font-bold px-3 py-1 rounded-full">Хіт</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Пуровер V60</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">110 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">Чистий, прозорий смак зерна з Кенії з вираженими нотами бергамоту та чорної смородини.</p>
+                        </div>
+                        <button onclick="openOrderModal('Пуровер V60')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item alternative bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=800&auto=format&fit=crop" alt="Флет Вайт" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Аеропрес</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">105 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">Швидке заварювання під тиском, що розкриває соковите тіло та багатий ароматичний профіль.</p>
+                        </div>
+                        <button onclick="openOrderModal('Аеропрес')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item desserts bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop" alt="Чизкейк" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-amber_gold text-coffee-950 text-xs font-bold px-3 py-1 rounded-full">Авторський</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Баскський Чизкейк</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">135 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">Ніжний кремовий чизкейк із карамелізованою скоринкою та ваніллю бурбон.</p>
+                        </div>
+                        <button onclick="openOrderModal('Баскський Чизкейк')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item desserts bg-coffee-50 rounded-2xl overflow-hidden border border-coffee-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800&auto=format&fit=crop" alt="Круасан" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-coffee-950">Мигдалевий Круасан</h3>
+                                <span class="font-serif font-bold text-coffee-700 text-lg">90 ₴</span>
+                            </div>
+                            <p class="text-coffee-600 text-sm mb-4">Класичний французький круасан із мигдалевим франжипаном та пластівцями.</p>
+                        </div>
+                        <button onclick="openOrderModal('Мигдалевий Круасан')" class="w-full py-2.5 rounded-xl border border-coffee-500 text-coffee-700 hover:bg-coffee-500 hover:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Замовити
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. REVIEWS SECTION -->
+    <section id="reviews" class="py-24 px-4 sm:px-8 bg-coffee-950 text-white relative overflow-hidden">
+        <!-- Background Ornaments -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-coffee-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-coffee-300 font-semibold tracking-widest text-xs uppercase mb-2 block">Враження гостей</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-4">Що про нас кажуть</h2>
+                <div class="w-16 h-1 bg-coffee-500 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-coffee-900/60 backdrop-blur-md p-8 rounded-2xl border border-coffee-800/60 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="flex text-amber_gold text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-coffee-200 text-sm italic leading-relaxed mb-6">
+                            "Неймовірна атмосфера та найкращий фільтр-кава у місті! Обслуговування на найвищому рівні, а бариста завжди підкаже, яке зерно обрати під настрій."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-coffee-800/60 pt-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Олена" class="w-12 h-12 rounded-full object-cover border-2 border-coffee-500">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Олена Коваленко</h4>
+                            <p class="text-xs text-coffee-400">Дизайнерка</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-coffee-900/60 backdrop-blur-md p-8 rounded-2xl border border-coffee-800/60 flex flex-col justify-between reveal" style="transition-delay: 150ms;">
+                    <div>
+                        <div class="flex text-amber_gold text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-coffee-200 text-sm italic leading-relaxed mb-6">
+                            "Баскський чизкейк просто тане у роті. Разом із капучино на мигдалевому молоці — це мій щоденний ритуал щастя. Дякую за вашу працю!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-coffee-800/60 pt-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Максим" class="w-12 h-12 rounded-full object-cover border-2 border-coffee-500">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Максим Мельник</h4>
+                            <p class="text-xs text-coffee-400">IT-спеціаліст</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-coffee-900/60 backdrop-blur-md p-8 rounded-2xl border border-coffee-800/60 flex flex-col justify-between reveal" style="transition-delay: 300ms;">
+                    <div>
+                        <div class="flex text-amber_gold text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-coffee-200 text-sm italic leading-relaxed mb-6">
+                            "Купую тут зерна додому вже понад рік. Завжди свіже обсмажування та чудовий аромат. Artisanal — це справжній знак якості."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-coffee-800/60 pt-4">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=crop" alt="Анна" class="w-12 h-12 rounded-full object-cover border-2 border-coffee-500">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Анна Ткаченко</h4>
+                            <p class="text-xs text-coffee-400">Маркетологиня</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CONTACTS & TABLE BOOKING SECTION -->
+    <section id="contacts" class="py-24 px-4 sm:px-8 bg-coffee-100/60 relative">
+        <div id="booking" class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 reveal">
+                    <span class="text-coffee-600 font-semibold tracking-widest text-xs uppercase mb-2 block">Зв'яжіться з нами</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-coffee-950 mb-6">Чекаємо вас у гості</h2>
+                    <p class="text-coffee-700 mb-8 leading-relaxed">
+                        Завітайте до нашої кав'ярні, щоб відчути атмосферу затишку, або забронюйте столик заздалегідь для робочої зустрічі чи романтичного вечора.
+                    </p>
+
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-coffee-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-900 text-base">Адреса</h4>
+                                <p class="text-coffee-700 text-sm">м. Київ, вул. Ярославів Вал, 14Б</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-coffee-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-900 text-base">Години роботи</h4>
+                                <p class="text-coffee-700 text-sm">Пн – Пт: 08:00 – 21:00</p>
+                                <p class="text-coffee-700 text-sm">Сб – Нд: 09:00 – 22:00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-coffee-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-900 text-base">Телефон</h4>
+                                <p class="text-coffee-700 text-sm">+380 (44) 123-45-67</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-coffee-200 hover:bg-coffee-500 hover:text-white text-coffee-800 flex items-center justify-center transition-all duration-300">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-coffee-200 hover:bg-coffee-500 hover:text-white text-coffee-800 flex items-center justify-center transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-coffee-200 hover:bg-coffee-500 hover:text-white text-coffee-800 flex items-center justify-center transition-all duration-300">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Booking Form Column -->
+                <div class="lg:col-span-7 reveal" style="transition-delay: 200ms;">
+                    <div class="glass-card rounded-3xl p-8 sm:p-10 shadow-lg border border-coffee-200">
+                        <h3 class="font-serif text-2xl font-bold text-coffee-950 mb-2">Заронювати столик</h3>
+                        <p class="text-coffee-600 text-sm mb-6">Заповніть форму, і ми підтвердимо ваше бронювання протягом 15 хвилин.</p>
+
+                        <form id="booking-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Ваше ім'я</label>
+                                    <input type="text" required placeholder="Олександр" class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Номер телефону</label>
+                                    <input type="tel" required placeholder="+380 67 000 0000" class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Дата</label>
+                                    <input type="date" required class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Час</label>
+                                    <input type="time" required class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Гостей</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all">
+                                        <option value="1">1 особа</option>
+                                        <option value="2" selected>2 особи</option>
+                                        <option value="3-4">3-4 особи</option>
+                                        <option value="5+">5+ осіб</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-coffee-800 mb-1">Побажання (необов'язково)</label>
+                                <textarea rows="3" placeholder="Наприклад, столик біля вікна..." class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 bg-white/80 text-sm transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-coffee-900 hover:bg-coffee-950 text-white font-semibold text-base transition-all shadow-md hover:shadow-lg">
+                                Підтвердити бронювання
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-coffee-950 text-coffee-400 py-12 px-4 sm:px-8 border-t border-coffee-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-coffee-500 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-mug-hot text-sm"></i>
+                </div>
+                <span class="font-serif text-lg font-bold text-white tracking-wider">ARTISANAL</span>
+            </div>
+
+            <p class="text-xs text-coffee-400">
+                &copy; 2026 Artisanal Coffee Roasters. Усі права захищено.
+            </p>
+
+            <div class="flex gap-6 text-xs text-coffee-400">
+                <a href="#" class="hover:text-white transition-colors">Політика конфіденційності</a>
+                <a href="#" class="hover:text-white transition-colors">Умови використання</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS NOTIFICATION MODAL -->
+    <div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl transform transition-all scale-95 opacity-0" id="modal-card">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="modal-title" class="font-serif text-2xl font-bold text-coffee-950 mb-2">Дякуємо!</h3>
+            <p id="modal-msg" class="text-coffee-600 text-sm mb-6">Ваш запит успішно отримано. Ми зв'яжемося з вами для підтвердження.</p>
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-coffee-900 text-white font-medium text-sm hover:bg-coffee-800 transition-colors">
+                Зрозуміло
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Header background change on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-coffee-950/90', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('bg-coffee-950/90', 'backdrop-blur-md', 'shadow-lg');
+                header.classList.add('py-4');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Menu filtering functionality
+        const filterBtns = document.querySelectorAll('.menu-filter');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-coffee-900', 'text-white', 'shadow-md');
+                    b.classList.add('bg-coffee-100', 'text-coffee-800');
+                });
+                btn.classList.add('active', 'bg-coffee-900', 'text-white', 'shadow-md');
+                btn.classList.remove('bg-coffee-100', 'text-coffee-800');
+
+                const category = btn.getAttribute('data-category');
+
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.classList.contains(category)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check
+        revealOnScroll();
+
+        // Modal Functionality
+        const modal = document.getElementById('modal');
+        const modalCard = document.getElementById('modal-card');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMsg = document.getElementById('modal-msg');
+
+        function openModal(title, message) {
+            modalTitle.innerText = title;
+            modalMsg.innerText = message;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modalCard.classList.remove('scale-95', 'opacity-0');
+                modalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalCard.classList.remove('scale-100', 'opacity-100');
+            modalCard.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Form Submit Event
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            openModal('Столик заброньовано!', 'Дякуємо за вашу заявку. Чекаємо на вас у нашому закладі!');
+            this.reset();
+        });
+
+        // Order item click event
+        function openOrderModal(itemName) {
+            openModal('Додано до замовлення!', `Ви обрали "${itemName}". Наш бариста вже чекає на ваше замовлення у кав'ярні!`);
+        }
+    </script>
+</body>
+</html>
